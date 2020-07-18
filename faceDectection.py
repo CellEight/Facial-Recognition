@@ -14,7 +14,7 @@ for (x ,y, w, h) in faces:
 
 cv2.imwrite("output.png", img)
 """
-
+video_capture = cv2.VideoCapture(0)
 know_image = face_recognition.load_image_file("person.jpg")
 know_encoding = face_recognition.face_encodings(know_image)[0]
 while True:
@@ -37,7 +37,7 @@ while True:
             font = cv2.FONT_HERSHEY_DUPLEX
             cv2.putText(unknown_image, f"Suspect {i}", (left + 6, bottom - 6), font, 0.35, (255, 255, 255), 1)
         i += 1
-    cv2.imgshow("output_labled_crowd.png",cv2.cvtColor(unknown_image,cv2.COLOR_BGR2RGB))
+    cv2.imshow("output_labled_crowd.png",unknown_image)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
